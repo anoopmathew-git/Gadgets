@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" action="{% url 'adminsave' %}" enctype="multipart/form-data">
+  {% csrf_token %}
+    <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Add Admin</h4>
+                    <p class="card-description"></p>
+                    <form class="forms-sample">
+                      <div class="form-group">
+                        <label for="exampleInputName1">Name</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" name="name" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail3">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email" name="email" required>
+                      </div>
+                         <div class="form-group">
+                        <label for="exampleInputName1">Mobile No</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="mobile" name="mobile" required>
+                      </div>
+
+                    <div class="form-group">
+                        <input type="file" name="img">
+                    </div>
+                          <div class="form-group">
+                        <label for="exampleInputName1">User ID</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Username" name="username" required>
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="pswd" required>
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputConfirmPassword1">Confirm Password</label>
+                        <input type="password" class="form-control" id="exampleInputConfirmPassword1" placeholder="Password" name="cpswd" required>
+                      </div>
+
+
+                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
+
+                    </form>
+                  </div>
+                </div>
+</form>
+</body>
+</html>
+{% endblock %}

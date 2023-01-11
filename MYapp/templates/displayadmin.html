@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="{% url 'addadminpage' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+  <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">admin Details</h4>
+                    <div class="table-responsive">
+                      <table class="table table-bordered">
+                        <thead>
+                          <tr>
+
+                            <th> Name </th>
+                            <th> Email</th>
+                              <th>Mobile NO</th>
+                            <th> Username </th>
+                            <th> Password </th>
+                            <th> Image </th>
+
+                          </tr>
+                        </thead>
+<!--                      -->
+                          <tbody>
+                          {% for d in data %}
+                          <tr>
+                              <td>{{d.name}}</td>
+                              <td>{{d.email}}</td>
+                              <td>{{d.mob}}</td>
+                               <td>{{d.username}}</td>
+                               <td>{{d.pswd}}</td>
+                               <td><img src="{{d.image.url}}"></td>
+
+                              <td>
+                                  <form action="{% url 'editpage' dataid=d.id %}">
+                                      <button type="submit" class="btn btn-primary mr-2">Edit</button>
+                                  </form>
+                              </td>
+                              <td>
+                                  <form action="{% url 'deleteadmin' dataid=d.id %}">
+                                      <button type="submit" class="btn btn-primary mr-2">Delete</button>
+                                  </form>
+                              </td>
+
+
+
+                          </tr>
+                          {% endfor %}
+                          </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+</form>
+
+</body>
+</html>
+{% endblock %}
